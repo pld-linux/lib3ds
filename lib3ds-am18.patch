@@ -1,0 +1,11 @@
+--- lib3ds-1.2.0/lib3ds.m4.orig	2000-07-16 01:14:59.000000000 +0200
++++ lib3ds-1.2.0/lib3ds.m4	2003-12-28 15:41:51.999237408 +0100
+@@ -1,7 +1,7 @@
+ dnl
+ dnl AM_PATH_LIB3DS([MINIMUM-VERSION, [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND]]])
+ dnl
+-AC_DEFUN(AM_PATH_LIB3DS,
++AC_DEFUN([AM_PATH_LIB3DS],
+ [
+ 
+ AC_ARG_WITH(lib3ds-prefix,[  --with-lib3ds-prefix=PFX   Prefix where lib3ds is installed (optional)],
