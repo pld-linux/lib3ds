@@ -2,12 +2,13 @@ Summary:	The 3D Studio File Format Library
 Summary(pl):	Biblioteka obs³uguj±ca format plików 3D Studio
 Name:		lib3ds
 Version:	1.2.0
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/lib3ds/%{name}-%{version}.tar.gz
 # Source0-md5:	3a7f891d18af0151876b98bc05d3b373
 Patch0:		%{name}-shared.patch
+Patch1:		%{name}-am18.patch
 URL:		http://lib3ds.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -57,11 +58,13 @@ Statyczna biblioteka lib3ds.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
+%patch1 -p1
 
-%build
 # extract CONFIGURE_GLUT macro
 tail -116 aclocal.m4 | head -102 > acinclude.m4
+
+%build
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
