@@ -6,6 +6,7 @@ Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/lib3ds/%{name}-%{version}.tar.gz
+# Source0-md5:	3a7f891d18af0151876b98bc05d3b373
 Patch0:		%{name}-shared.patch
 URL:		http://lib3ds.sourceforge.net/
 BuildRequires:	autoconf
