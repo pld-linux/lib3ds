@@ -62,7 +62,7 @@ Statyczna biblioteka lib3ds.
 %patch1 -p1
 
 # extract CONFIGURE_GLUT macro
-tail -116 aclocal.m4 | head -102 > acinclude.m4
+tail -n 116 aclocal.m4 | head -n 102 > acinclude.m4
 
 %build
 %{__libtoolize}
