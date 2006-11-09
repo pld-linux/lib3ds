@@ -36,7 +36,7 @@ w sieci.
 Summary:	lib3ds header files
 Summary(pl):	Pliki nag³ówkowe lib3ds
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 lib3ds header files.
@@ -48,7 +48,7 @@ Pliki nag³ówkowe lib3ds.
 Summary:	Static lib3ds library
 Summary(pl):	Statyczna biblioteka lib3ds
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static lib3ds library.
