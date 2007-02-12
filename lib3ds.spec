@@ -1,5 +1,5 @@
 Summary:	The 3D Studio File Format Library
-Summary(pl):	Biblioteka obs硊guj眂a format plik體 3D Studio
+Summary(pl.UTF-8):   Biblioteka obs艂uguj膮ca format plik贸w 3D Studio
 Name:		lib3ds
 Version:	1.2.0
 Release:	2
@@ -23,37 +23,37 @@ import and export filters.
 This project is not related in any form to Autodesk. The library is
 based on unofficial information about the 3DS format found on the web.
 
-%description -l pl
-lib3ds to wolnodost阷na alternatywa dla 3DS File Toolkit Autodeska do
-obs硊gi plik體 3DS. G丑wnym celem biblioteki jest uproszczenie
-tworzenia filtr體 importuj眂ych i eksportuj眂ych 3DS.
+%description -l pl.UTF-8
+lib3ds to wolnodost臋pna alternatywa dla 3DS File Toolkit Autodeska do
+obs艂ugi plik贸w 3DS. G艂贸wnym celem biblioteki jest uproszczenie
+tworzenia filtr贸w importuj膮cych i eksportuj膮cych 3DS.
 
-Projekt nie jest w 縜den spos骲 zwi眤any z Autodeskiem. Biblioteka
+Projekt nie jest w 偶aden spos贸b zwi膮zany z Autodeskiem. Biblioteka
 jest oparta na nieoficjalnych informacjach o formacie 3DS znalezionych
 w sieci.
 
 %package devel
 Summary:	lib3ds header files
-Summary(pl):	Pliki nag丑wkowe lib3ds
+Summary(pl.UTF-8):   Pliki nag艂贸wkowe lib3ds
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 lib3ds header files.
 
-%description devel -l pl
-Pliki nag丑wkowe lib3ds.
+%description devel -l pl.UTF-8
+Pliki nag艂贸wkowe lib3ds.
 
 %package static
 Summary:	Static lib3ds library
-Summary(pl):	Statyczna biblioteka lib3ds
+Summary(pl.UTF-8):   Statyczna biblioteka lib3ds
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static lib3ds library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka lib3ds.
 
 %prep
