@@ -1,5 +1,5 @@
 Summary:	The 3D Studio File Format Library
-Summary(pl.UTF-8):   Biblioteka obsługująca format plików 3D Studio
+Summary(pl.UTF-8):	Biblioteka obsługująca format plików 3D Studio
 Name:		lib3ds
 Version:	1.2.0
 Release:	2
@@ -34,7 +34,7 @@ w sieci.
 
 %package devel
 Summary:	lib3ds header files
-Summary(pl.UTF-8):   Pliki nagłówkowe lib3ds
+Summary(pl.UTF-8):	Pliki nagłówkowe lib3ds
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -46,7 +46,7 @@ Pliki nagłówkowe lib3ds.
 
 %package static
 Summary:	Static lib3ds library
-Summary(pl.UTF-8):   Statyczna biblioteka lib3ds
+Summary(pl.UTF-8):	Statyczna biblioteka lib3ds
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
