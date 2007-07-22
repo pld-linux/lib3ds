@@ -1,3 +1,6 @@
+# Conditional build:
+%bcond_without	static_libs	# don't build static library
+#
 Summary:	The 3D Studio File Format Library
 Summary(pl.UTF-8):	Biblioteka obsługująca format plików 3D Studio
 Name:		lib3ds
@@ -13,6 +16,7 @@ URL:		http://lib3ds.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
+BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -71,8 +75,8 @@ tail -n 116 aclocal.m4 | head -n 102 > acinclude.m4
 %{__autoheader}
 %{__automake}
 #CPPFLAGS="-I/usr/X11R6/include" - but GL/glut is used only for noinst_PROGRAMS
-%configure
-
+%configure \
+	%{!?with_static_libs:--disable-static}
 %{__make}
 
 %install
@@ -83,8 +87,8 @@ rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 install examples/*.c $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
-sed -e 's/@GLUT_HEADER_DIR@/GL/' examples/glstub.h.in \
-	$RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+sed -i -e 's/@GLUT_HEADER_DIR@/GL/' examples/glstub.h.in \
+	$RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}/*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -109,6 +113,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/lib3ds-config.1*
 %{_examplesdir}/%{name}-%{version}
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib3ds.a
+%endif
