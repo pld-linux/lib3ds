@@ -17,7 +17,6 @@ URL:		http://lib3ds.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
-BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -88,8 +87,8 @@ rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 install examples/*.c $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
-sed -i -e 's/@GLUT_HEADER_DIR@/GL/' examples/glstub.h.in \
-	$RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}/*
+sed -e 's/@GLUT_HEADER_DIR@/GL/' examples/glstub.h.in \
+	>$RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}/glstub.h
 
 %clean
 rm -rf $RPM_BUILD_ROOT
