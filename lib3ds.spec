@@ -1,21 +1,19 @@
 #
 # Conditional build:
-%bcond_without	static_libs	# don't build static library
+%bcond_without	static_libs	# static library
 #
 Summary:	The 3D Studio File Format Library
 Summary(pl.UTF-8):	Biblioteka obsługująca format plików 3D Studio
 Name:		lib3ds
-Version:	1.2.0
-Release:	2
-License:	LGPL
+Version:	1.3.0
+Release:	1
+License:	LGPL v2.1+
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/lib3ds/%{name}-%{version}.tar.gz
-# Source0-md5:	3a7f891d18af0151876b98bc05d3b373
-Patch0:		%{name}-shared.patch
-Patch1:		%{name}-am18.patch
+Source0:	https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/lib3ds/%{name}-%{version}.zip
+# Source0-md5:	2572f7b0f29b591d494c1a0658b35c86
 URL:		http://lib3ds.sourceforge.net/
 BuildRequires:	autoconf
-BuildRequires:	automake
+BuildRequires:	automake >= 1.4
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -62,11 +60,6 @@ Statyczna biblioteka lib3ds.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-
-# extract CONFIGURE_GLUT macro
-tail -n 116 aclocal.m4 | head -n 102 > acinclude.m4
 
 %build
 %{__libtoolize}
@@ -86,9 +79,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
-install examples/*.c $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
-sed -e 's/@GLUT_HEADER_DIR@/GL/' examples/glstub.h.in \
-	>$RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}/glstub.h
+cp -p examples/*.c $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -99,9 +90,10 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
-%attr(755,root,root) %{_bindir}/3ds*
-%attr(755,root,root) %{_libdir}/lib3ds.so.*.*
-%{_mandir}/man1/3ds*.1*
+%attr(755,root,root) %{_bindir}/3dsdump
+%attr(755,root,root) %{_libdir}/lib3ds-1.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/lib3ds-1.so.3
+%{_mandir}/man1/3dsdump.1*
 
 %files devel
 %defattr(644,root,root,755)
@@ -109,7 +101,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib3ds.so
 %{_libdir}/lib3ds.la
 %{_includedir}/lib3ds
-%{_aclocaldir}/*.m4
+%{_aclocaldir}/lib3ds.m4
 %{_mandir}/man1/lib3ds-config.1*
 %{_examplesdir}/%{name}-%{version}
 
